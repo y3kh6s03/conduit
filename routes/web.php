@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ConduitController::class, 'index'])->name('index');
 
+require __DIR__.'/auth.php';
+
 Route::prefix('/')
 ->controller(ConduitController::class)
 ->name('conduit.')
@@ -26,4 +28,3 @@ Route::prefix('/')
     Route::get('/{edit}', 'edit')->name('edit');
 });
 
-require __DIR__.'/auth.php';

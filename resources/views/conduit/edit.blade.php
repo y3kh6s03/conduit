@@ -1,4 +1,4 @@
-<x-head CSS="" js="">
+<x-head css="" js="">
     <div class="editor-page">
         <div class="container page">
             <div class="row">

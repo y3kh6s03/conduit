@@ -7,7 +7,7 @@
                 <a class="nav-link active" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Sign in</a>
+                <a class="nav-link" href="{{route('login')}}">Sign in</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/register">Sign up</a>

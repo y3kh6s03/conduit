@@ -17,6 +17,7 @@ return new class extends Migration
 
             $table->foreign('post_id')->references('id')->on('posts');
             $table->foreign('tag_id')->references('id')->on('tags');
+            $table->primary(['post_id','tag_id']);
         });
     }
 

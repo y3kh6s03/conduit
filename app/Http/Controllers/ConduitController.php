@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class ConduitController extends Controller
 {
     public function index()
     {
-        return view('conduit.index');
+        $posts=Post::with('tags')->select('headline','title','subtitle','content','user_id')->get();
+        return view('conduit.index',compact('posts'));
     }
     public function create()
     {

@@ -21,6 +21,7 @@
                         </ul>
                     </div>
 
+                    @foreach($posts as $post)
                     <div class="article-preview">
                         <div class="article-meta">
                             <a href="/profile/eric-simons"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
@@ -33,16 +34,19 @@
                             </button>
                         </div>
                         <a href="/article/how-to-build-webapps-that-scale" class="preview-link">
-                            <h1>How to build webapps that scale</h1>
-                            <p>This is the description for the post.</p>
+                            <h1>{{$post->headline}}</h1>
+                            <p>{{$post->subtitle}}</p>
                             <span>Read more...</span>
+                            @if(!$post->tags->isEmpty())
                             <ul class="tag-list">
-                                <li class="tag-default tag-pill tag-outline">realworld</li>
-                                <li class="tag-default tag-pill tag-outline">implementations</li>
+                                @foreach($post->$tags as $tag)
+                                <li class="tag-default tag-pill tag-outline">{{$tag->name}}</li>
+                                @endforeach
                             </ul>
+                            @endif
                         </a>
                     </div>
-
+                    @endforeach
                     <div class="article-preview">
                         <div class="article-meta">
                             <a href="/profile/albert-pai"><img src="http://i.imgur.com/N4VcUeJ.jpg" /></a>

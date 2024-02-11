@@ -2,13 +2,13 @@
     <div class="article-page">
         <div class="banner">
             <div class="container">
-                <h1>How to build webapps that scale</h1>
+                <h1>{{$post->headline}}</h1>
 
                 <div class="article-meta">
                     <a href="/profile/eric-simons"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
                     <div class="info">
-                        <a href="/profile/eric-simons" class="author">Eric Simons</a>
-                        <span class="date">January 20th</span>
+                        <a href="/profile/eric-simons" class="author">{{$post->user->name}}</a>
+                        <span class="date">{{$post->created_at}}</span>
                     </div>
                     <button class="btn btn-sm btn-outline-secondary">
                         <i class="ion-plus-round"></i>
@@ -19,12 +19,14 @@
                         <i class="ion-heart"></i>
                         &nbsp; Favorite Post <span class="counter">(29)</span>
                     </button>
-                    <button class="btn btn-sm btn-outline-secondary">
+                    @if($post->user_id===Auth::id())
+                    <a href="{{route('conduit.edit',['id'=>$post->id])}}" class="btn btn-sm btn-outline-secondary">
                         <i class="ion-edit"></i> Edit Article
-                    </button>
+                    </a>
                     <button class="btn btn-sm btn-outline-danger">
                         <i class="ion-trash-a"></i> Delete Article
                     </button>
+                    @endif
                 </div>
             </div>
         </div>
@@ -33,10 +35,10 @@
             <div class="row article-content">
                 <div class="col-md-12">
                     <p>
-                        Web development technologies have evolved at an incredible clip over the past few years.
+                        {{$post->subtitle}}
                     </p>
-                    <h2 id="introducing-ionic">Introducing RealWorld.</h2>
-                    <p>It's a great solution for learning how other frameworks work.</p>
+                    <h2 id="introducing-ionic">{{$post->title}}</h2>
+                    <p>{{$post->content}}</p>
                     <ul class="tag-list">
                         <li class="tag-default tag-pill tag-outline">realworld</li>
                         <li class="tag-default tag-pill tag-outline">implementations</li>
@@ -50,7 +52,7 @@
                 <div class="article-meta">
                     <a href="profile.html"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
                     <div class="info">
-                        <a href="" class="author">Eric Simons</a>
+                        <a href="" class="author">{{$post->user->name}}</a>
                         <span class="date">January 20th</span>
                     </div>
 
@@ -63,12 +65,14 @@
                         <i class="ion-heart"></i>
                         &nbsp; Favorite Article <span class="counter">(29)</span>
                     </button>
+                    @if($post->user_id===Auth::id())
                     <button class="btn btn-sm btn-outline-secondary">
                         <i class="ion-edit"></i> Edit Article
                     </button>
                     <button class="btn btn-sm btn-outline-danger">
                         <i class="ion-trash-a"></i> Delete Article
                     </button>
+                    @endif
                 </div>
             </div>
 

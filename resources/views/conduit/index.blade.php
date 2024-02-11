@@ -26,7 +26,7 @@
                         @foreach($authPosts as $authPost)
                         <div class="article-preview auth-post">
                             <div class="article-meta">
-                                <a href="/profile/eric-simons"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
+                                <a href="{{route('conduit.show',['postId'=>$authPost->id])}}"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
                                 <div class="info">
                                     <a href="/profile/eric-simons" class="author">{{$authPost->user->name}}</a>
                                     <span class="date">{{$authPost->created_at}}</span>
@@ -35,7 +35,7 @@
                                     <i class="ion-heart"></i> 29
                                 </button>
                             </div>
-                            <a href="/article/how-to-build-webapps-that-scale" class="preview-link">
+                            <a href="{{route('conduit.show',['postId'=>$authPost->id])}}" class="preview-link">
                                 <h1>{{$authPost->headline}}</h1>
                                 <p>{{$authPost->subtitle}}</p>
                                 <span>Read more...</span>
@@ -63,17 +63,10 @@
                                     <i class="ion-heart"></i> 29
                                 </button>
                             </div>
-                            <a href="/article/how-to-build-webapps-that-scale" class="preview-link">
+                            <a href="{{route('conduit.show',['postId'=>$post->id])}}" class="preview-link">
                                 <h1>{{$post->headline}}</h1>
                                 <p>{{$post->subtitle}}</p>
                                 <span>Read more...</span>
-                                @if(!$post->tags->isEmpty())
-                                <ul class="tag-list">
-                                    @foreach($post->$tags as $tag)
-                                    <li class="tag-default tag-pill tag-outline">{{$tag->name}}</li>
-                                    @endforeach
-                                </ul>
-                                @endif
                             </a>
                         </div>
                         @endforeach

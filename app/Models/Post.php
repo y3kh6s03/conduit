@@ -21,4 +21,12 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class, 'post_tags','tag_id','post_id');
     }
+
+    protected $fillable = [
+        'headline',
+        'title',
+        'subtitle',
+        'content',
+        'user_id'
+    ];
 }

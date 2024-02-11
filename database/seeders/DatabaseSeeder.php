@@ -18,6 +18,5 @@ class DatabaseSeeder extends Seeder
         \App\Models\Like::factory(300)->create();
         \App\Models\LikeCount::factory(1000)->create();
         \App\Models\Post::factory(100)->create();
-        \App\Models\PostTag::factory(20)->create();
     }
 }

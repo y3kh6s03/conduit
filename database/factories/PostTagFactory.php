@@ -18,9 +18,12 @@ class PostTagFactory extends Factory
      */
     public function definition(): array
     {
+        $post_id=Post::pluck('id')->toArray();
+        $tag_id=Tag::pluck('id')->toArray();
         return [
-            'post_id'=>Post::factory()->create()->id,
-            'tag_id'=>Tag::factory()->create()->id
+            'post_id' => $this->faker->randomElement($post_id),
+            'tag_id' => $this->faker->randomElement($tag_id, $this->faker->numberBetween(1, 5)),
+            'updated_at'=>now(),
         ];
     }
 }

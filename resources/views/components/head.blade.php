@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="//demo.productionready.io/main.css" />
     {{$css}}
     {{$js}}
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/main.js'])
 </head>
 @if(auth()->check())
 <x-auth-header />

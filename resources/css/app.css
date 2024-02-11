@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.row{
+    justify-content: center;
+}
+.auth-post-container {
+    display: none;
+    margin: 0 auto;
+}
+.auth-post-container.open{
+    display: block;
+}
+.user-post-container.close{
+    display: none;
+}
+.auth-tab{
+    cursor: pointer;
+}
+.user-tab{
+    cursor: pointer;
+}

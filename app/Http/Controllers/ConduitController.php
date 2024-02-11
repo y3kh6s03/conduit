@@ -13,10 +13,10 @@ class ConduitController extends Controller
         if (Auth::id()) {
             $authPosts = Post::with('tags')
                 ->select('headline', 'title', 'subtitle', 'content', 'user_id', 'created_at')
-                ->where('user_id',Auth::id())
+                ->where('user_id', Auth::id())
                 ->get();
-        }else{
-            $authPosts=[];
+        } else {
+            $authPosts = [];
         }
         $posts = Post::with('tags')
             ->select('headline', 'title', 'subtitle', 'content', 'user_id', 'created_at')
@@ -27,6 +27,17 @@ class ConduitController extends Controller
     public function create()
     {
         return view('conduit.create');
+    }
+    public function store(Request $request)
+    {
+        Post::create([
+            'user_id' => $request->id,
+            'headline' => $request->headline,
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'content' => $request->content,
+        ]);
+        return to_route('index');
     }
     public function show()
     {

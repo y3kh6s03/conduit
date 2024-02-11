@@ -12,22 +12,24 @@ class ConduitController extends Controller
     {
         if (Auth::id()) {
             $authPosts = Post::with('tags')
-                ->select('headline', 'title', 'subtitle', 'content', 'user_id', 'created_at')
+                ->select('headline', 'title', 'subtitle', 'content', 'user_id', 'created_at', 'id')
                 ->where('user_id', Auth::id())
                 ->get();
         } else {
             $authPosts = [];
         }
         $posts = Post::with('tags')
-            ->select('headline', 'title', 'subtitle', 'content', 'user_id', 'created_at')
+            ->select('headline', 'title', 'subtitle', 'content', 'user_id', 'created_at', 'id')
             ->get();
 
         return view('conduit.index', compact('posts', 'authPosts'));
     }
+
     public function create()
     {
         return view('conduit.create');
     }
+
     public function store(Request $request)
     {
         Post::create([
@@ -39,12 +41,27 @@ class ConduitController extends Controller
         ]);
         return to_route('index');
     }
-    public function show()
+
+    public function show($postId)
     {
-        return view('conduit.show');
+        $post = Post::find($postId);
+        return view('conduit.show',compact('post'));
     }
-    public function edit()
+
+    public function edit($id)
     {
-        return view('conduit.edit');
+        $post = Post::find($id);
+        return view('conduit.edit',compact('post'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        $post = Post::find($id);
+        $post->headline = $request->headline;
+        $post->title = $request->title;
+        $post->subtitle = $request->subtitle;
+        $post->content = $request->content;
+        $post->save();
+        return to_route('index');
     }
 }

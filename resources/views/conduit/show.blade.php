@@ -23,9 +23,12 @@
                     <a href="{{route('conduit.edit',['id'=>$post->id])}}" class="btn btn-sm btn-outline-secondary">
                         <i class="ion-edit"></i> Edit Article
                     </a>
-                    <button class="btn btn-sm btn-outline-danger">
-                        <i class="ion-trash-a"></i> Delete Article
-                    </button>
+                    <form action="{{route('conduit.destroy',['id'=>$post->id])}}" method="POST">
+                        @csrf
+                        <button class="delete-button btn btn-sm btn-outline-danger">
+                            <i class="ion-trash-a"></i> Delete Article
+                        </button>
+                    </form>
                     @endif
                 </div>
             </div>
@@ -69,9 +72,12 @@
                     <button class="btn btn-sm btn-outline-secondary">
                         <i class="ion-edit"></i> Edit Article
                     </button>
-                    <button class="btn btn-sm btn-outline-danger">
-                        <i class="ion-trash-a"></i> Delete Article
-                    </button>
+                    <form action="{{route('conduit.destroy',['id'=>$post->id])}}" method="POST">
+                        @csrf
+                        <button class="delete-button btn btn-sm btn-outline-danger" >
+                            <i class="ion-trash-a"></i> Delete Article
+                        </button>
+                    </form>
                     @endif
                 </div>
             </div>

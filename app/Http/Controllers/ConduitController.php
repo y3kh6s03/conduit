@@ -45,16 +45,16 @@ class ConduitController extends Controller
     public function show($postId)
     {
         $post = Post::find($postId);
-        return view('conduit.show',compact('post'));
+        return view('conduit.show', compact('post'));
     }
 
     public function edit($id)
     {
         $post = Post::find($id);
-        return view('conduit.edit',compact('post'));
+        return view('conduit.edit', compact('post'));
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $post = Post::find($id);
         $post->headline = $request->headline;
@@ -62,6 +62,13 @@ class ConduitController extends Controller
         $post->subtitle = $request->subtitle;
         $post->content = $request->content;
         $post->save();
+        return to_route('index');
+    }
+
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
         return to_route('index');
     }
 }

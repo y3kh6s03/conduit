@@ -21,8 +21,7 @@ class PostFactory extends Factory
             'headline'=>fake()->realText(30),
             'title'=>fake()->realText(20),
             'subtitle'=>fake()->realText(50),
-            'content'=>fake()->realText(200),
-            'user_id'=>User::factory()->create()->id,
+            'content'=>fake()->realText(300),
         ];
     }
 }

@@ -18,10 +18,12 @@ class CommentFactory extends Factory
      */
     public function definition(): array
     {
+        $postId=Post::all()->random(1)[0]->id;
+        $userId=User::all()->random(1)[0]->id;
         return [
-            'user_id'=>User::factory()->create()->id,
-            'post_id'=>Post::factory()->create()->id,
-            'comment'=>fake()->realText(100),
+            'comment'=>fake()->realText(200),
+            'post_id'=>$postId,
+            'user_id'=>$userId,
         ];
     }
 }
